@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let monthMin = 1, monthMax = 12
+				let numberMin = 0, numberMax = 6
+
+				//2. Знаходимо результат
+				let randomMonth = monthMin + Math.floor(Math.random() * (monthMax - monthMin + 1))
+				let randomNumber = numberMin + Math.floor(Math.random() * (numberMax - numberMin + 1))
+				const rundomSum = randomMonth + randomNumber
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Місяць: ${randomMonth}; Номер: ${randomNumber}; Cума ${rundomSum}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

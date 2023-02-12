@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 0</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 0</h1>
+			<div>
+				<p class="task__text text">
+					<b>Обчислити значення виразів</b>
+				</p>
+				<p class="task__text text">
+					1) S<sub>1</sub>=a+12+b
+				</p>
+				<p class="task__text text">
+					2) S<sub>2</sub>=√(((a+b)/2a) )
+				</p>
+				<p class="task__text text">
+					3) S<sub>3</sub>=<sup>3</sup>√(a+b)c
+				</p>
+				<p class="task__text text">
+					4) S<sub>4</sub>=sin⁡(a/(-b))
+				</p>
+			</div>
+			<script>
+				//1. Вводимо необхідні дані
+				let a = parseFloat(prompt('Введіть число'))
+				let b = parseFloat(prompt('Введіть число'))
+				let c = parseFloat(prompt('Введіть число'))
+
+
+				//2. Знаходимо результат
+				let sumNumber = a + b
+
+				//2.1
+				const sumNumberPlus = sumNumber + 12;
+
+				//2.2
+				const sumRoot = Math.sqrt(sumNumber / (2 * a))
+
+				//2.3
+				const sumCubeRoot = Math.cbrt(sumNumber / c)
+
+				//2.4
+				const sinNumber = Math.sin(a / b)
+
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Результати обчислення:</p>
+					<p class="text">${sumNumberPlus}</p>
+					<p class="text">${sumRoot.toFixed(2)}</p>
+					<p class="text">${sumCubeRoot.toFixed(2)}</p>
+					<p class="text">${sinNumber.toFixed(2)}</p>
+				</div>`);
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

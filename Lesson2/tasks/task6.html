@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">20
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="task__text text">
+				З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару
+				окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let productOnePrice = parseFloat(prompt('Введіть вартість', '0'))
+				let productOneQuantity = parseInt(prompt('Введіть кількість', '0'))
+				let productSecondPrice = parseFloat(prompt('Введіть вартість', '0'))
+				let productSecondQuantity = parseInt(prompt('Введіть кількість', '0'))
+				let productThirdPrice = parseFloat(prompt('Введіть вартість', '0'))
+				let productThirdQuantity = parseInt(prompt('Введіть кількість', '0'))
+
+
+				//2. Знаходимо результат
+				const productOneSum = productOnePrice * productOneQuantity
+				const productSecondSum = productSecondPrice * productSecondQuantity
+				const productThirdSum = productThirdPrice * productThirdQuantity
+				const productTotalSum = productOneSum + productSecondSum + productThirdSum
+				//3. Виводимо результат
+				document.write(`
+				<table сlass="check">
+						<tr>
+							<th colspan="2"><b>Чек</b></th>
+						</tr>
+						<tr>
+							<td>Товар 1</td>
+							<td><b>${productOneSum.toFixed(2)} грн.</b></td>
+						</tr>
+						<tr>
+							<td>×${productOneQuantity}</td>
+							<td>${productOnePrice} грн.</td>
+						</tr>
+						<tr>
+							<td>Товар 2</td>
+							<td><b>${productSecondSum.toFixed(2)} грн.</b></td>
+						</tr>
+						<tr>
+							<td>×${productSecondQuantity}</td>
+							<td>${productSecondPrice} грн.</td>
+						</tr>
+						<tr>
+							<td>Товар 3</td>
+							<td><b>${productThirdSum.toFixed(2)} грн.</b></td>
+						</tr>
+						<tr>
+							<td>×${productThirdQuantity}</td>
+							<td>${productThirdPrice} грн.</td>
+						</tr>
+						<tr>
+							<th class="total-sum" colspan="2"><b>${productTotalSum.toFixed(2)} грн.</b></th>
+						</tr>
+					</table>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

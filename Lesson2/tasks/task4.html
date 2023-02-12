@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="task__text text">
+				Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let ourLength = parseFloat(prompt('Довжина в сантиметрах', '0'))
+
+				//2. Знаходимо результат
+				const meterLenght = Math.floor(ourLength / 100)
+				const kilometerLenght = Math.floor(ourLength / 100000)
+
+				//3. Виводимо результат
+				document.write(`
+					<table>
+						<tr>
+							<td>Довжина в метрах</td>
+							<td>${meterLenght} м</td>
+						</tr>
+						<tr>
+							<td>Довжина в кілометрах</td>
+							<td>${kilometerLenght} км</td>
+						</tr>
+					</table>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
