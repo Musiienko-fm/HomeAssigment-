@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const numberDay = parseInt(prompt('Введіть номер дня'))
+
+				//2. Знаходимо результат
+				let dayWeek;
+				switch (numberDay) {
+					case 1: dayWeek = "Понеділок";
+						break;
+					case 2: dayWeek = "Вівторок";
+						break;
+					case 3: dayWeek = "Середа";
+						break;
+					case 4: dayWeek = "Четверг";
+						break;
+					case 5: dayWeek = "П'ятниця";
+						break;
+					case 6: dayWeek = "Суббота";
+						break;
+					case 7: dayWeek = "Неділя";
+						break;
+					default: dayWeek = "Невірний день";
+						break
+				}
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Пора року: ${dayWeek} </p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

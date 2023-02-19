@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const numberMonth = parseInt(prompt('Номер місяця'))
+
+				//2. Знаходимо результат
+				let nameMonth;
+				switch (numberMonth) {
+					case 12:
+					case 1:
+					case 2: nameMonth = "Зима";
+						break;
+					case 3:
+					case 4:
+					case 5: nameMonth = "Весна";
+						break;
+					case 6:
+					case 7:
+					case 8: nameMonth = "Літо";
+						break;
+					case 9:
+					case 10:
+					case 11: nameMonth = "Осінь";
+						break;
+					default: nameMonth = "Ви ввели неіснуючий номер місяця. Спробуйте ще";
+						break
+				}
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">День тижня: ${nameMonth} </p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

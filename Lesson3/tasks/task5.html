@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 5</h1>
+			<p class="task__text text">
+				З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+				Вивести на екран назву транспортного засобу, яким він може керувати.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const vehicleA = "A"
+				const vehicleB = "B"
+				const vehicleC = "C"
+				const drivingLicense = prompt('Введіть категорію прав A,B,C').toLocaleUpperCase()
+
+				//2. Знаходимо результат
+				let yourVehicle;
+				if (drivingLicense === vehicleA)
+					yourVehicle = "Мотоцикл"
+				else if (drivingLicense === vehicleB)
+					yourVehicle = "Легковий автомобіль"
+				else if (drivingLicense === vehicleC)
+					yourVehicle = "Вантажний автомобіль"
+				else
+					yourVehicle = "Невірна категорія. Спробуйте ще"
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Транспортний засіб: ${yourVehicle} </p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
