@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 9</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 9</h1>
+			<p class="task__text text">
+				Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+
+				const userConsent = confirm('Загадайте число від 1 до 20')
+				const minNumber = 1
+				const maxNumber = 20
+				let i = 0
+				let randomNumber = 0
+				let askAnswer
+				//2. Знаходимо результат
+				do {
+					randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber
+					askAnswer = confirm(`Ваше число ${randomNumber}?`)
+					i++
+				}
+				while (askAnswer !== true)
+				document.write(`
+						<div class="text--mb">
+						<p class="text">Число вгадане. Ваше число:${randomNumber} </p>
+						</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

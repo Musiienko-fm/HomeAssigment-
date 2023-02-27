@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="task__text text">
+				Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const columnNumber = 3;
+				const rowNumber = 3;
+				let countNumber = 0;
+				//2. Знаходимо результат
+				for (let n = 1; n <= 3; n++) {
+					document.write(`
+					<table class="table-number">
+						<tbody>
+				`)
+					for (let r = 1; r <= rowNumber; r++) {
+						document.write(`<tr>`)
+						for (let d = 1; d <= columnNumber; d++) {
+							document.write(`<td>${++countNumber}</td>`)
+						}
+						document.write(`</tr>`)
+					}
+					document.write(`
+						</tbody>
+					</table>
+				`)
+				}
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 13</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 13</h1>
+			<p class="task__text text">
+				Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів
+				користувач намагається потопити корабель.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const amountRows = 10
+				const amountColumn = 10
+				let amountShots = parseInt(prompt('Введіть кількість пострілів'))
+				let gameResult
+				//2. Знаходимо результат
+				let randomX = Math.floor(Math.random() * amountColumn) + 1
+				let randomY = Math.floor(Math.random() * amountRows) + 1
+				for (i = 0; i < amountShots; i++) {
+					const shotsX = parseInt(prompt('Введіть координату по осі X'))
+					const shotsY = parseInt(prompt('Введіть координату по осі Y'))
+					if (shotsX === randomX && shotsY === randomY) {
+						gameResult = "Вітаємо, Ви потопили корабель"
+						break;
+					}
+					else if (i === amountShots)
+						gameResult = "Ви використали всі постріли. Спробуйте ще раз"
+					else
+						alert("Ви промахнулися")
+				}
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">${(gameResult)}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

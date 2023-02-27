@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 14</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 14</h1>
+			<p class="task__text text">
+				Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до
+				тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму
+				потрібно ввести).
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let sumProduct = 990
+				//2. Знаходимо результат
+				do {
+					const userCost = parseInt(prompt(`За товари потрібно сплатити ${sumProduct} грн. Введіть сумму, яку Ви сплачуєте`, '0'))
+					if (userCost <= sumProduct)
+						sumProduct -= userCost
+					else {
+						const yourChange = userCost - sumProduct
+						document.write(`<div class="text--mb">
+						<p class="text">Не забудьте Вашу решту! ${yourChange} грн.</p>
+					</div>`)
+						break;
+					}
+				}
+				while (sumProduct > 0)
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Дякуємо за покупку!</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

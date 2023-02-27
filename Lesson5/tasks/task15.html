@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 15</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 15</h1>
+			<p class="task__text text">
+				Користувача поступово вводить показники температури протягом року. Знайти середню температуру.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let sumTemperature = 0
+				let countMeasurements = 0
+				let averageTemperature = 0
+
+				//2. Знаходимо результат
+				for (let m = 1; m <= 12; m++) {
+					let userTemperature = parseFloat(prompt(`${m} тиждень. Введіть значення температури`))
+					if (!isFinite(userTemperature))
+						break
+					sumTemperature += userTemperature
+					countMeasurements++
+				}
+				averageTemperature = sumTemperature / countMeasurements
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Cередне значення температури ${Math.round(averageTemperature)} °C</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

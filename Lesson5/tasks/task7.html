@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const amountParagraph = parseInt(prompt('Введіть кількість абзаців?', '0'))
+				//2. Знаходимо результат
+				for (let i = 1; i <= amountParagraph; i++) {
+					document.write(`<h1>Заголовок ${i}</h1>`)
+					for (let p = 1; p <= i; p++) {
+						document.write(`<p>Розділ ${i}, параграф ${p}</p>`)
+					}
+					document.write('<hr>')
+				}
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

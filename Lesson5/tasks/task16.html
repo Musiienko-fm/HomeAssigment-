@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 16</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 16</h1>
+			<p class="task__text text">
+				Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину
+				прибутку та вивести величину прибутку протягом кожного окремого тижня.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const amountWeeks = parseInt(prompt("Введіть кількість тижнів", "0"))
+				let summTotalMoney = 0
+
+				//2. Знаходимо результат
+				for (let i = 1; i <= amountWeeks; i++) {
+					let summWeekMoney = 0
+					for (let d = 1; d <= 7; d++) {
+						let dayProfit = parseFloat(prompt(`Введіть прибуток за ${d} день`, '0'))
+						summWeekMoney += dayProfit
+					}
+					summTotalMoney += summWeekMoney
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Сумма прибутку за ${i} тиждень складає ${summTotalMoney}</p>
+					</div>`)
+				}
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Загальна сумма прибутку складає ${summTotalMoney}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

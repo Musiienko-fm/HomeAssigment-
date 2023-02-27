@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 12</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 11</h1>
+			<p class="task__text text">
+				Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з
+				чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн,
+				три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для
+				вибору зображення за номером).
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				let slotMachineResult = ''
+
+				//2. Знаходимо результат
+				for (i = 1; i <= 3; i++) {
+					let randomNumber = Math.floor(Math.random() * 4) + 1
+					slotMachineResult += String(randomNumber)
+					switch (randomNumber) {
+						case 1: document.write('<img class="slot-mashine" style="max-width: 70px;" src=../../img/cherry.svg>')
+							break;
+						case 2: document.write('<img class="slot-mashine" style="max-width: 70px;" src=../../img/lemon.svg>')
+							break
+						case 3: document.write('<img class="slot-mashine" style="max-width: 70px;" src=../../img/strawberry.svg>')
+							break
+						case 4: document.write('<img class="slot-mashine" style="max-width: 70px;" src=../../img/pomegranate.svg>')
+							break
+					}
+				}
+				let jackpot
+				switch (slotMachineResult) {
+					case '111': jackpot = "Ви виграли 100 грн"
+						break;
+					case '222': jackpot = "Ви виграли 200 грн"
+						break;
+					case '333': jackpot = "Ви виграли 500 грн"
+						break;
+					case '444': jackpot = "Ви виграли 1000 грн"
+						break;
+					default: jackpot = "Ви програли"
+						break;
+				}
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">${(jackpot)}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
