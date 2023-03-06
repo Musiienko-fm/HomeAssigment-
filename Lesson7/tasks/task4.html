@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Створити окремі функції, які для 4 чисел знаходять:
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) суму;
+				</li>
+				<li class="body-list__text text">
+					2) добуток;
+				</li>
+				<li class="body-list__text text">
+					3) середнє арифметичне;
+				</li>
+				<li class="body-list__text text">
+					4) мінімальне значення.
+				</li>
+			</ul>
+			<script>
+				//1. Записуємо функцію
+				function sumNumber(num1, num2, num3, num4) {
+					return num1 + num2 + num3 + num4
+				}
+				function mulNumber(num1, num2, num3, num4) {
+					return num1 * num2 * num3 * num4
+				}
+				function averageNumber(num1, num2, num3, num4) {
+					return (num1 + num2 + num3 + num4) / 4
+				}
+				function minNumber(num1, num2, num3, num4) {
+					let min = num1
+					if (min > num2)
+						min = num2
+					else if (min > num3)
+						min = num3
+					else if (min > num4)
+						min = num4
+					return min
+				}
+
+				//2. Вводимо необхідні дані
+				const userNumberOne = parseInt(prompt("Введіть перше число"))
+				const userNumberSecond = parseInt(prompt("Введіть друге число"))
+				const userNumberThird = parseInt(prompt("Введіть трете число"))
+				const userNumberFourth = parseInt(prompt("Введіть четверте число"))
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Сумa чисел дорівнює ${(sumNumber(userNumberOne, userNumberSecond, userNumberThird, userNumberFourth))}</p>
+					<p class="text">Добуток чисел дорівнює ${(mulNumber(userNumberOne, userNumberSecond, userNumberThird, userNumberFourth))}</p>
+					<p class="text">Середнє арифметичне дорівнює ${(averageNumber(userNumberOne, userNumberSecond, userNumberThird, userNumberFourth))}</p>
+					<p class="text">Мінімальне число дорінює ${(minNumber(userNumberOne, userNumberSecond, userNumberThird, userNumberFourth))}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

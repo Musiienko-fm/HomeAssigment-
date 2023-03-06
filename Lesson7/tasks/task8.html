@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 8</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 8</h1>
+			<p class="task__text text">
+				Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються
+				у функцію)
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const firstImage = '<img src="../../img/bathroom.jpg" alt="bathroom">'
+				const secondImage = '<img src="../../img/children-room.jpg" alt="children-room">'
+				const thirdImage = '<img src="../../img/kitchen.jpg" alt="kitchen">'
+				const fourthImage = '<img src="../../img/room.jpg" alt="roomn">'
+				//2. Записуємо функцію
+				function getImage(img1, img2, img3, img4) {
+					let numberImage = Math.floor(Math.random() * 4 + 1)
+					switch (numberImage) {
+						case 1:
+							return img1;
+						case 2:
+							return img2;
+						case 3:
+							return img3;
+						case 4:
+							return img3;
+					}
+				}
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">${getImage(firstImage, secondImage, thirdImage, fourthImage)}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

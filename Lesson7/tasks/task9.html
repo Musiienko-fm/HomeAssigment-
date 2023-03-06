@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 9</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 9</h1>
+			<p class="body-list__text text">
+				Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди
+				переходимо при кліку на зображення (тег img повине знаходитись у середині тега a:
+				<code>&lt;a&gt;&lt;img src="шлях" &gt;&lt;/a&gt;</code>
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const userImage = '../../img/island.jpg'
+				const userTitle = '<h1>Хочеш незабутню подорож?</h1>'
+				const userLink = 'https://www.youtube.com/watch?v=-yRhTQoFVWk'
+				//2. Записуємо функцію
+				function getImage(img, text, link) {
+					document.write(`
+				<div class="text--mb">
+					<a href="${link}"><img src=${img}>${text}</a>
+				</div>`)
+				}
+				//4.Обчислюємо результат
+				getImage(userImage, userTitle, userLink)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

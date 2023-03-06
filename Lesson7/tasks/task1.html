@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць
+				</div>
+				<script>
+					//1. Записуємо функцію
+					function seasonsYear(numberMonth) {
+						switch (numberMonth) {
+							case 12:
+							case 1:
+							case 2:
+								return "Зараз зима";
+							case 3:
+							case 4:
+							case 5:
+								return "Зараз весна";
+							case 6:
+							case 7:
+							case 8:
+								return "Зараз літо";
+							case 9:
+							case 10:
+							case 11:
+								return "Зараз осінь";
+							default:
+								return "Невірно введений місяць";
+						}
+					}
+					//2. Вводимо необхідні дані
+					let numberMonth = parseInt(prompt("Введіть номер місяця від 1 до 12"))
+					//3. Знаходимо результат
+					const seasonsName = seasonsYear(numberMonth)
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">${(seasonsName)}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

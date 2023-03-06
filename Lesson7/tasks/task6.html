@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="body-list__text text">
+				Створити окремі функції, які переводять:
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) Сантиметри у дюйми
+				</li>
+				<li class="body-list__text text">
+					2) Кілограми у фунти
+				</li>
+				<li class="body-list__text text">
+					3) Кілометри у милі
+				</li>
+			</ul>
+			<script>
+				//1. Записуємо функцію
+				function getInchQuantity(centimetres) {
+					return centimetres / 2.54
+				}
+				function getPoundQuantity(kilogram) {
+					return kilogram * 2.2046
+				}
+				function getMileQuantity(kilometre) {
+					return kilometre / 1.609
+				}
+
+				//2. Вводимо необхідні дані
+				const userCentimetres = parseFloat(prompt("Введіть кількість сантиметрів"))
+				const userKilogram = parseFloat(prompt("Введіть кількість кілограм"))
+				const userKilometre = parseFloat(prompt("Введіть кількість кілометрів"))
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text"> Кількість у ${userCentimetres} сантиметрах ${(getInchQuantity(userCentimetres)).toFixed(2)} дюймів</p>
+					<p class="text"> Кількість у ${userKilogram} кілограмач ${(getPoundQuantity(userKilogram)).toFixed(2)} фунтів</p>
+					<p class="text"> Кількість у ${userKilometre} кілометрах ${(getMileQuantity(userKilometre)).toFixed(2)} миль</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

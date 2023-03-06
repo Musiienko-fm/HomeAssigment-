@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 11</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 11</h1>
+			<p class="task__text text">
+				Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для
+				додатних показів температури
+			</p>
+			<script>
+				//1. Записуємо функцію
+				function getAverageTemp(amount) {
+					let amountPlusTemp = 0
+					let sumTemp = 0
+					for (let i = 1; i <= amount; i++) {
+						let rundomTemperature = Math.floor(Math.random() * (20 - (-20) + 1) + (-20))
+						if (rundomTemperature > 0) {
+							sumTemp += rundomTemperature
+							amountPlusTemp++
+						}
+
+					}
+					return sumTemp / amountPlusTemp
+				}
+
+				//2. Вводимо необхідні дані
+				const userAmountTemp = parseInt(prompt("Введіть кількість показів температури"))
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text"> Cереднє значення додатних показів температури: ${getAverageTemp(userAmountTemp)}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

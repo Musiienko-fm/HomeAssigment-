@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 5</h1>
+			<p class="task__text text">
+				Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних,
+				кількість додатних, кількість більших за 100.
+			</p>
+			<script>
+				//1. Записуємо функцію
+				function getSortNumber(...number) {
+					let evenNumber = 0
+					for (let i = 0; i < number.length; i++) {
+						if (number[i] % 2 === 0) evenNumber++
+					}
+					let positiveNumber = 0
+					for (let i = 0; i < number.length; i++) {
+						if (number[i] >= 0) positiveNumber++
+					}
+					let moreOneHundred = 0
+					for (let i = 0; i < number.length; i++) {
+						if (number[i] > 100) moreOneHundred++
+					}
+					return [evenNumber, positiveNumber, moreOneHundred]
+				}
+				//2. Вводимо необхідні дані
+				const userNumberOne = parseInt(prompt("Введіть перше число"))
+				const userNumberSecond = parseInt(prompt("Введіть друге число"))
+				const userNumberThird = parseInt(prompt("Введіть трете число"))
+				//4.Обчислюємо результат
+				let numberRezult = getSortNumber(userNumberOne, userNumberSecond, userNumberThird);
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Кількість парних чисел ${numberRezult[0]}</p>
+					<p class="text">Кількість додатних чисел ${numberRezult[1]}</p>
+					<p class="text">Кількість чисел більших за 100 ${numberRezult[2]}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
