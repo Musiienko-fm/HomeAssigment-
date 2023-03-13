@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) за весь рік
+				</li>
+				<li class="body-list__text text">
+					2) у першій половині року;
+				</li>
+				<li class="body-list__text text">
+					3) у другій половині року
+				</li>
+				<li class="body-list__text text">
+					4) за літо
+				</li>
+				<li class="body-list__text text">
+					5) за ІІ квартал
+				</li>
+				<li class="body-list__text text">
+					6) за парні місяці (з парними номерами)
+				</li>
+				<li class="body-list__text text">
+					7) за місяці, які є початковими у сезоні (весна, літо, осінь, зима)
+				</li>
+			</ul>
+			<script>
+				//1. Вводимо необхідні дані
+				function getRandomArray(minValue, maxValue) {
+					let randomArray = []
+					for (let i = 0; i < 12; i++) {
+						const randomNum = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+						randomArray.push(randomNum)
+					}
+					return randomArray
+				}
+				const paymentYearList = getRandomArray(1, 200)
+				console.log(paymentYearList)
+				//2. Записуємо функцію
+				function getPaymentSum(paymentList, minMonthIndex, maxMonthIndex, step = 1) {
+					let paySum = 0
+					for (let month = minMonthIndex - 1; month < maxMonthIndex; month += step) {
+						paySum += paymentList[month]
+					}
+					return paySum
+				}
+				//3. Проводимо розрахунок
+				//1) за весь рік
+				const sumYear = getPaymentSum(paymentYearList, 1, 12)
+				//2) у першій половині року;
+				const sumFirstHalfYear = getPaymentSum(paymentYearList, 1, 6)
+				//3) у другій половині року
+				const sumSecondHalfYear = getPaymentSum(paymentYearList, 7, 12)
+				//4) за літо
+				const sumSummerYear = getPaymentSum(paymentYearList, 6, 8)
+				//5) за ІІ квартал
+				const sumSecondQuarter = getPaymentSum(paymentYearList, 4, 6)
+				//6) за парні місяці (з парними номерами)
+				const sumEvenMonth = getPaymentSum(paymentYearList, 2, 6, 2)
+				//7) за місяці, які є початковими у сезоні (весна, літо, осінь, зима)
+				const sumfirstMonthSeason = getPaymentSum(paymentYearList, 3, 12, 3)
+				//4. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text"> Кількість грошей за весь рік ${sumYear}</p>
+					<p class="text"> Кількість грошей за першу половину року ${sumFirstHalfYear}</p>
+					<p class="text"> Кількість грошей за другу половину року ${sumSecondHalfYear}</p>
+					<p class="text"> Кількість грошей за літо ${sumSummerYear}</p>
+					<p class="text"> Кількість грошей за ІІ квартал ${sumSecondQuarter}</p>
+					<p class="text"> Кількість грошей за парні місяц ${sumEvenMonth}</p>
+					<p class="text"> Кількість грошей за місяці, які є початковими у сезоні ${sumfirstMonthSeason}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

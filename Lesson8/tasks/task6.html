@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="body-list__text text">
+				Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити
+				користувач (кількість грошей задається).
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const amountMoney = parseFloat(prompt('Введіть кількість грошей'))
+				const productPrices = [25, 20, 50, 70, 30, 15, 200, 95, 40, 15]
+				const productTitles = ['Burger', 'Fries', 'Pizza', 'Taco', 'Salad', 'Sandwich', 'Sushi', 'Pasta', 'Soup', 'Ice Cream']
+
+				//2. Записуємо функцію
+				function getAvailablePurchasesList(productPrices, productTitles, amountMoney) {
+					let availablePurchasesList = []
+					for (let i = 0; i < productPrices.length; i++) {
+						if (productPrices[i] < amountMoney)
+							availablePurchasesList.push(productTitles[i])
+					}
+					return availablePurchasesList
+				}
+
+				//2. Проводимо розрахунок
+				const arrAvailablePurchasesList = getAvailablePurchasesList(productPrices, productTitles, amountMoney)
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text"> Ви можете купити ${arrAvailablePurchasesList}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

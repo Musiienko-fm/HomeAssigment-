@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const arrayNumber = [10, 1100, 5, 8700, 34, 1720, 51, 98, 1030, 45, 67, 91, 1070, 55, 77];
+				//2. Записуємо функцію
+				function getMoreThousandDiscount(...arrayNumber) {
+					arrayNumber.forEach(
+						(element, index, arrRef) => {
+							if (arrRef[index] > 1000)
+								arrRef[index] = element * 0.7
+						}
+					)
+					return arrayNumber
+				}
+				//3. Проводимо розрахунок
+				const arrNumberDiscount = getMoreThousandDiscount(...arrayNumber)
+				//4. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Початковий масив: ${arrayNumber}</p>
+					<p class="text">${arrNumberDiscount}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

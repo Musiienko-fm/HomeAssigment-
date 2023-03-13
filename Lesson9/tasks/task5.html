@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 5</h1>
+			<p class="task__text text">
+				Дано масив елементів. Знайти добуток додатних елементів
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const arrayNumber = [10, -110, 5, -87, -34, -172, 51, -98, -103, 45, -67, -91, -107, 55, -77];
+				//2. Записуємо функцію
+				function calcMulPositiveNumber(...arrayNumber) {
+					let mulNumber = 1
+					for (let element of arrayNumber) {
+						if (element > 0)
+							mulNumber *= element
+					}
+					return mulNumber
+				}
+				//3.Обчислюємо результат
+				const mulPositiveNumber = calcMulPositiveNumber(...arrayNumber)
+				//4. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Добуток додатних елементів дорівнює: ${mulPositiveNumber}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він
+					відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно),
+					трійочник(є хоча би одна трійка)).
+				</div>
+				<script>
+					//1. Вводимо необхідні дані
+					const amountSubject = parseInt(prompt("Введіть кількість предметів"))
+					// Записуємо масив оцінок
+					function getRatingStudent(amount) {
+						let ratingStudent = []
+						for (let i = 0; i < amount; i++) {
+							let ratingSubject = parseInt(prompt("Введіть оцінку з предмету"))
+							ratingStudent.push(ratingSubject)
+						}
+						return ratingStudent
+					}
+					const totalRatingStudent = getRatingStudent(amountSubject)
+					//2. Знаходимо результат
+					function calcAverageRating(...rating) {
+						let avarageRating = 0
+						for (let i = 0; i < rating.length; i++) {
+							avarageRating += rating[i]
+						}
+						return avarageRating / amountSubject
+					}
+					function statusStudend(...rating) {
+						let minRating = rating[0]
+						for (let i = 0; i < rating.length; i++) {
+							if (minRating > rating[i])
+								minRating = rating[i]
+						}
+						switch (minRating) {
+							case 1:
+							case 2:
+								return "Двійочник";
+							case 3:
+								return "Трійочник";
+							case 4:
+								return "Хорошист";
+							case 5:
+								return "Відмінник";
+							default:
+								return "Невірна оцінка";
+						}
+					}
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Середня оцінка дорівнює ${calcAverageRating(...totalRatingStudent)}</p>
+						<p class="text">Цей учень є ${statusStudend(...totalRatingStudent)}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

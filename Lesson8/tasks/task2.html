@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 2</h1>
+			<div class="body-list__text text">
+				Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+			</div>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) номери днів, протягом яких кількість відвідувачів була меншою за 20
+				</li>
+				<li class="body-list__text text">
+					2) номери днів, коли кількість відвідувачів була мінімальною
+				</li>
+				<li class="body-list__text text">
+					3) номери днів, коли кількість відвідувачів була максимальною
+				</li>
+				<li class="body-list__text text">
+					4) загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних
+				</li>
+			</ul>
+			<script>
+				//1. Отримуємо дані
+				function getVisitorCount() {
+					let weekCountVisitor = []
+					for (let i = 0; i <= 6; i++) {
+						let countVisitor = parseInt(prompt(`Введіть кількість відвідувачів за ${i + 1} день`))
+						weekCountVisitor.push(countVisitor)
+					}
+					return weekCountVisitor
+				}
+				const arrCountVisitor = getVisitorCount()
+				//2. Знаходимо результат
+				//номери днів, протягом яких кількість відвідувачів була меншою за 20
+				function getNumberLessTw(...number) {
+					let numberLessTwRezult = []
+					for (let i = 0; i < number.length; i++) {
+						if (number[i] < 20) {
+							numberLessTwRezult.push(i + 1)
+						}
+					}
+					return numberLessTwRezult
+				}
+				// номери днів, коли кількість відвідувачів була мінімальною
+				function getDayVisitorMin(...number) {
+					let numberMinDay = []
+					const visitorMin = Math.min(...number)
+					for (let i = 0; i < number.length; i++) {
+						if (visitorMin === number[i])
+							numberMinDay.push(i + 1)
+					}
+					return numberMinDay
+				}
+				// номери днів, коли кількість відвідувачів була максимальною
+				function getDayVisitorMax(...number) {
+					let numberMaxDay = []
+					const visitorMax = Math.max(...number)
+					for (let i = 0; i < number.length; i++) {
+						if (visitorMax === number[i])
+							numberMaxDay.push(i + 1)
+					}
+					return numberMaxDay
+				}
+				// загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних
+				const lastWorkDay = arrCountVisitor.length - 2
+
+				function calcVisitorWorkDay(...number) {
+					let sumVisitorWorkDay = 0
+					for (let i = 0; i < lastWorkDay; i++) {
+						sumVisitorWorkDay += number[i]
+					}
+					return sumVisitorWorkDay
+				}
+				function calcVisitorHolidayDay(...number) {
+					let sumVisitorHolidayDay = 0
+					for (let i = lastWorkDay; i < number.length; i++) {
+						sumVisitorHolidayDay += number[i]
+					}
+					return sumVisitorHolidayDay
+				}
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Дні в які кількість відвідувачів була меншою за 20 ${(getNumberLessTw(...arrCountVisitor))}</p>
+					<p class="text">Дні коли кількість відвідувачів була мінімальною ${(getDayVisitorMin(...arrCountVisitor))}</p>
+					<p class="text">Дні коли кількість відвідувачів була максимальною ${(getDayVisitorMax(...arrCountVisitor))}</p>
+					<p class="text">Загальну кількість відвідувачів в робочий день ${(calcVisitorWorkDay(...arrCountVisitor))}, та в вихідний день ${(calcVisitorHolidayDay(...arrCountVisitor))}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

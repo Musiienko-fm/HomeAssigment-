@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 8</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 8</h1>
+			<p class="task__text text">
+				Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const carNumbers = ["АА1234ВВ", "АА5678КК", "АА9012ХХ", "ОО4321ІІ", "ОР3456СС", "РТ6789НН", "СУ0123ММ", "ХХ4567ОО", "ХХ7890РР", "ЧЕ8901ТТ"];
+				//2. Проводимо розрахунок
+				const carLetterA = carNumbers.filter(element => element[0] === 'А')
+				console.log(carLetterA)
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">Початковий масив: ${carNumbers}</p>
+					<p class="text">${carLetterA}</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

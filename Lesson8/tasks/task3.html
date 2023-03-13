@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 3</h1>
+			<p class="task__text text">
+				Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const nameStudent = ["Марія", "Олександр", "Надія", "Ірина", "Іван", "Олег", "Андрій", "Юлія", "Іван", "Оксана"]
+				//1. Обчислюємо результат
+				function calcCountNameMatches() {
+					let countNumber = 0
+					for (let i = 0; i < nameStudent.length; i++)
+						if (nameStudent[i] === "Іван")
+							countNumber++
+					return countNumber
+				}
+				//2. Вводимо необхідні дані
+				const countNameMatches = calcCountNameMatches(...nameStudent)
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+					<p class="text">${nameStudent}</p>
+					<p class="text">Ім'я Іван зустрічається ${countNameMatches} разів</p>
+				</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

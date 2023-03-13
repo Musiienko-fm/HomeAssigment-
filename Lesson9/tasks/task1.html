@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів
+					заповнених нулями.
+				</div>
+				<script>
+					//1. Вводимо необхідні дані
+					const arrQuantity = parseInt(prompt("Введіть кількість елементів"))
+					const arrUser = new Array(arrQuantity).fill(0)
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">${arrUser}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

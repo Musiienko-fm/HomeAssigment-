@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 5</h1>
+			<p class="task__text text">
+				Дано послідовність оцінок учня. Підрахувати кількість:
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) двійок
+				</li>
+				<li class="body-list__text text">
+					2) кількість хороших оцінок (добре, відмінно);
+				</li>
+				<li class="body-list__text text">
+					3) кількість оцінок, які нижче середнього.
+				</li>
+			</ul>
+			<script>
+				//1. Отримуємо необхідні дані
+				const amountSubject = parseInt(prompt("Введіть кількість предметів"))
+				// Записуємо масив оцінок
+				function getLearnerGrades(amount) {
+					let gradeLearner = []
+					for (let i = 0; i < amount; i++) {
+						let gradeSubject = parseInt(prompt("Введіть оцінку з предмету"))
+						gradeLearner.push(gradeSubject)
+					}
+					return gradeLearner
+				}
+
+				const arrLearnerGrades = getLearnerGrades(amountSubject)
+				console.log(arrLearnerGrades)
+				//2. Знаходимо результат
+				//1) отримуємо кількість двійок
+				function getQuantityGradeTwo(...grades) {
+					let countGradeTwo = 0
+					for (i = 0; i < grades.length; i++) {
+						if (grades[i] === 2)
+							countGradeTwo++
+					}
+					return countGradeTwo
+				}
+				//2) кількість хороших оцінок (добре, відмінно);
+				function getQuantityGradeGood(...grades) {
+					let countGradeGood = 0
+					for (i = 0; i < grades.length; i++) {
+						if (grades[i] > 3)
+							countGradeGood++
+					}
+					return countGradeGood
+				}
+				// 3) кількість оцінок, які нижче середнього
+				function getAverageGrade(...grades) {
+					let sumGrade = 0
+					for (i = 0; i < grades.length; i++) {
+						sumGrade += grades[i]
+					}
+					return sumGrade / amountSubject
+				}
+				const averageGrade = getAverageGrade(...arrLearnerGrades)
+				console.log(averageGrade)
+				function getQuantityLessAvarageGrade(...grades) {
+					let countQuantityLessAvarageGrade = 0
+					for (i = 0; i < grades.length; i++) {
+						if (grades[i] < averageGrade)
+							countQuantityLessAvarageGrade++
+					}
+					return countQuantityLessAvarageGrade
+				}
+				//3. Виводимо результат
+				document.write(`
+					<p class="text">Кількість оцінок двійок ${getQuantityGradeTwo(...arrLearnerGrades)}</p>
+					<p class="text">Кількість оцінок хороших оцінок (добре, відмінно) ${getQuantityGradeGood(...arrLearnerGrades)}</p>
+					<p class="text">Кількість оцінок нижче середньої ${getQuantityLessAvarageGrade(...arrLearnerGrades)}</p>
+					`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

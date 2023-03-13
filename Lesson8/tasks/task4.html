@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) починаються на букву «А»;
+				</li>
+				<li class="body-list__text text">
+					2) перша і остання літери співпадають;
+				</li>
+				<li class="body-list__text text">
+					3) складаються з більше ніш 5 символів;
+				</li>
+			</ul>
+			<script>
+				//1. Вводимо необхідні дані
+				/*
+				function getCarNumbers() {
+					let numberCars = []
+					let numberCar
+
+					do {
+						numberCar = prompt('Введіть номер авто:')
+						if (numberCar !== null) {
+							numberCars.push(numberCar.toUpperCase())
+						}
+					} while (numberCar !== null)
+					return numberCars
+				}
+				
+				const arrCarNumbers = getCarNumbers()
+				*/
+				const arrCarNumbers = ["АА1234ВВ", "АА5678КК", "АА9012ХХ", "ОО4321ІО", "О345С", "Р67Р", "С01М", "ХХ4567ОХ", "ХХ7890РР", "ЧЕ8901ТТ"]
+				console.log(arrCarNumbers)
+				//1. Записуємо функцію
+				//1) починаються на букву «А»;
+				function getCompareFirstLetter(...numberCars) {
+					let countCompareFirstLetter = 0
+					for (i = 0; i < numberCars.length; i++) {
+						if (numberCars[i][0] === "А")
+							countCompareFirstLetter++
+					}
+					return countCompareFirstLetter
+				}
+				//2) перша і остання літери співпадають;
+				function getCompareFirstLastLetter(...numberCars) {
+					let countCompareFirstLastLetter = 0
+					for (i = 0; i < numberCars.length; i++) {
+						if (numberCars[i][0] === numberCars[i][numberCars[i].length - 1])
+							countCompareFirstLastLetter++
+					}
+					return countCompareFirstLastLetter
+				}
+				//3) складаються з більше ніш 5 символів;
+				function getUpFiveNumberCheraster(...numberCars) {
+					let countUpFiveNumberCheraster = 0
+					for (i = 0; i < numberCars.length; i++) {
+						if (numberCars[i].length > 5)
+							countUpFiveNumberCheraster++
+					}
+					return countUpFiveNumberCheraster
+				}
+				//2. Вводимо необхідні дані
+
+				//3. Виводимо результат
+				document.write(`
+					<p class="text">Кількість номерів, що починаються на букву "А" ${getCompareFirstLetter(...arrCarNumbers)} разів</p>
+					<p class="text">Кількість номерів, у яких перша і остання літери співпадають ${getCompareFirstLastLetter(...arrCarNumbers)}</p>
+					<p class="text">Кількість номерів, що складаються з більше ніж 5 символів ${getUpFiveNumberCheraster(...arrCarNumbers)}</p>
+					`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

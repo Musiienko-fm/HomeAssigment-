@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Дано масив елементів. Вивести на екран елементи, що більші за 100
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const arrayNumber = [10, 110, 5, 87, 34, 172, 51, 98, 103, 45, 67, 91, 107, 55, 77];
+				for (let element of arrayNumber) {
+					if (element > 100) {
+						document.write(`<span class="text">${element}</span>`)
+					}
+				}
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
