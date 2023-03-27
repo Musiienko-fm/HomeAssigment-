@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Знайти суми елементів у вказаній області
+				</div>
+				<script>
+					//1. Отримуємо необхідні дані
+					maxValue = 100
+					minValue = 1
+					function getRandomNumber(minValue, maxValue) {
+						const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+						return randomNumber
+					}
+					//2. Генеруємо одновимірний масив ()
+					function generateRandomArray(arrayLenght, minValue, maxValue) {
+						const arrNumber = []
+						for (let i = 0; i < arrayLenght; i++) {
+							const randomNumber = getRandomNumber(minValue, maxValue)
+							arrNumber.push(randomNumber)
+						}
+						return arrNumber
+					}
+					//2. Генеруємо двовимірний масив ()
+					function generateRandomTable(rowsNumber, columnNumber, minValue, maxValue) {
+						const table = []
+						for (let i = 0; i < rowsNumber; i++) {
+							const randomRow = generateRandomArray(columnNumber, minValue, maxValue)
+							table.push(randomRow)
+						}
+						return table
+					}
+					const randomTable = generateRandomTable(4, 4, minValue, maxValue)
+					document.write(`
+					<table>
+						<tbody>
+					`)
+					for (let r = 0; r < randomTable.length; r++) {
+						document.write(`<tr>`)
+						for (let d = 0; d < randomTable[r].length; d++) {
+							document.write(`<td>${randomTable[r][d]}</td>`)
+						}
+						document.write(`</tr>`)
+					}
+					document.write(`
+						</tbody>
+					</table>
+					`)
+					//1)[0, 1][0,1]
+					function getSumSecondQuarter(table) {
+						let sum = 0
+						for (let r = 0; r <= 1; r++) {
+							for (let d = 0; d <= 1; d++) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumSecondQuarter = getSumSecondQuarter(randomTable)
+					//2) [0,1][2,3]
+					function getSumFirstQuarter(table) {
+						let sum = 0
+						for (let r = 0; r <= 1; r++) {
+							for (let d = 2; d <= 3; d++) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumFirstQuarter = getSumFirstQuarter(randomTable)
+					//3) [2,3][0,1]
+					function getSumThirdQuarter(table) {
+						let sum = 0
+						for (let r = 2; r <= 3; r++) {
+							for (let d = 0; d <= 1; d++) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumThirdQuarter = getSumThirdQuarter(randomTable)
+					//4) [2,3][2,3]
+					function getSumFourthQuarter(table) {
+						let sum = 0
+						for (let r = 2; r <= 3; r++) {
+							for (let d = 2; d <= 3; d++) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumFourthQuarter = getSumFourthQuarter(randomTable)
+					//5) Суму парних рядків
+					function getSumEvenRows(table) {
+						let sum = 0
+						for (let r = 0; r < table.length; r += 2) {
+							for (let d = 0; d < table[r].length; d++) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumEvenRows = getSumEvenRows(randomTable)
+					//6) Суму непарних стовпців
+					function getSumOddColumn(table) {
+						let sum = 0
+						for (let r = 0; r < table.length; r++) {
+							for (let d = 1; d < table[r].length; d += 2) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumOddColumn = getSumOddColumn(randomTable)
+					//7) У парних рядках – непарні стовпці, у непарних – парні
+					function getSumEvenRowOddColumn(table) {
+						let sum = 0
+						for (let r = 0; r < table.length; r += 2) {
+							for (let d = 1; d < table[r].length; d += 2) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					function getSumOddRowEvenColumn(table) {
+						let sum = 0
+						for (let r = 1; r < table.length; r += 2) {
+							for (let d = 0; d < table[r].length; d += 2) {
+								sum += table[r][d]
+							}
+						}
+						return sum
+					}
+					const sumEvenRowOddColumn = getSumEvenRowOddColumn(randomTable)
+					const sumOddRowEvenColumn = getSumOddRowEvenColumn(randomTable)
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Сума елементів [0, 1][0,1] ${sumSecondQuarter}</p>
+						<p class="text">Сума елементів [0,1][2,3] ${sumFirstQuarter}</p>
+						<p class="text">Сума елементів [2,3][0,1] ${sumThirdQuarter}</p>
+						<p class="text">Сума елементів [2,3][2,3] ${sumFourthQuarter}</p>
+						<p class="text">Сума парних рядків ${sumEvenRows}</p>
+						<p class="text">Сума непарних стовпців ${sumOddColumn}</p>
+						<p class="text">Сума у парних рядків – непарні стовпців: ${sumEvenRowOddColumn}</p>
+						<p class="text">Сума у непарних – парних стовпців: ${sumOddRowEvenColumn}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

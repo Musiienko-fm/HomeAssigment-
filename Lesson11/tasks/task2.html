@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 2</h1>
+				<div class="task__text text">
+					Знайти суми елементів у вказаній області
+				</div>
+				<ul class="body-list__text text">
+					<li class="body-list__text text">
+						1) загальний прибуток кожного масиву за тиждень;
+					</li>
+					<li class="body-list__text text">
+						2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за
+						вівторок, і т.д.);
+					</li>
+					<li class="body-list__text text">
+						3) загальний прибуток за робочі дні
+					</li>
+					<li class="body-list__text text">
+						4) загальний прибуток за вихідні дні
+					</li>
+					<li class="body-list__text text">
+						5)максимальний прибуток за середу
+					</li>
+					<li class="body-list__text text">
+						6)сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+					</li>
+					<li class="body-list__text text">
+						7) відсортувати кожен тиждень за зростанням
+					</li>
+					<li class="body-list__text text">
+						8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при
+						порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+					</li>
+					<li class="body-list__text text">
+						9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків
+						треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з
+						елементів повинен іти раніше).
+					</li>
+				</ul>
+				<script>
+					//1. Отримуємо необхідні дані
+					maxValue = 1000
+					minValue = 1
+					function getRandomNumber(minValue, maxValue) {
+						const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+						return randomNumber
+					}
+					//2. Генеруємо одновимірний масив ()
+					function generateRandomProfit(arrayLenght, minValue, maxValue) {
+						const arrNumber = []
+						for (let i = 0; i < arrayLenght; i++) {
+							const randomNumber = getRandomNumber(minValue, maxValue)
+							arrNumber.push(randomNumber)
+						}
+						return arrNumber
+					}
+					//2. Генеруємо двовимірний масив ()
+					function generateProfitRandomTable(rowsNumberStores, columnNumberDayWeek, minValue, maxValue) {
+						const table = []
+						for (let i = 0; i < rowsNumberStores; i++) {
+							const weekProfit = generateRandomProfit(columnNumberDayWeek, minValue, maxValue)
+							table.push(weekProfit)
+						}
+						return table
+					}
+					const rowsNumberStores = parseInt(prompt("Введіть кількість магазинів"))
+					const allTableProfitStores = generateProfitRandomTable(rowsNumberStores, 7, minValue, maxValue)
+					document.write(`
+					<table>
+						<tbody>
+					`)
+					for (let r = 0; r < allTableProfitStores.length; r++) {
+						document.write(`<tr>`)
+						for (let d = 0; d < allTableProfitStores[r].length; d++) {
+							document.write(`<td>${allTableProfitStores[r][d]}</td>`)
+						}
+						document.write(`</tr>`)
+					}
+					document.write(`
+						</tbody>
+					</table>
+					`)
+					//1)Загальний прибуток кожного масиву за тиждень
+					function getSumStoresWeek(tableProfit) {
+						let sumProfitWeek = []
+						for (let r = 0; r < tableProfit.length; r++) {
+							const oneSum = tableProfit[r].reduce((prevSum, el) => prevSum + el)
+							sumProfitWeek.push(oneSum)
+						}
+						return sumProfitWeek
+					}
+					const sumProfitStoresWeek = getSumStoresWeek(allTableProfitStores)
+					//2)загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+					function getSumDayWeek(tableProfit) {
+						let arrSumDayProfit = []
+						for (let d = 0; d < 7; d++) {
+							let sumDayProfit = 0
+							for (let r = 0; r < tableProfit.length; r++) {
+								sumDayProfit += tableProfit[r][d]
+							}
+							arrSumDayProfit.push(sumDayProfit)
+						}
+						return arrSumDayProfit
+					}
+					const sumDayProfit = getSumDayWeek(allTableProfitStores)
+					//3) загальний прибуток за робочі дні
+					function getSumWorkDayWeek(tableProfit) {
+						let arrSumWorkDayProfit = []
+						for (let d = 0; d < 5; d++) {
+							let sumDayProfit = 0
+							for (let r = 0; r < tableProfit.length; r++) {
+								sumDayProfit += tableProfit[r][d]
+							}
+							arrSumWorkDayProfit.push(sumDayProfit)
+						}
+						return arrSumWorkDayProfit
+					}
+					const sumWorkDayWeek = getSumWorkDayWeek(allTableProfitStores)
+					//4) загальний прибуток за вихідні дні
+					function getSumWeekendDayWeek(tableProfit) {
+						let arrSumWeekendDayProfit = []
+						for (let d = 5; d < 7; d++) {
+							let sumDayProfit = 0
+							for (let r = 0; r < tableProfit.length; r++) {
+								sumDayProfit += tableProfit[r][d]
+							}
+							arrSumWeekendDayProfit.push(sumDayProfit)
+						}
+						return arrSumWeekendDayProfit
+					}
+					const sumWeekendDayWeek = getSumWeekendDayWeek(allTableProfitStores)
+					//5)максимальний прибуток за середу
+					function getMaxProfitWednesday(tableProfit) {
+						let maxProfitWednesday = 0
+						for (let r = 0; r < tableProfit.length; r++) {
+							for (let d = 2; d < 3; d++) {
+								if (maxProfitWednesday < tableProfit[r][d])
+									maxProfitWednesday = tableProfit[r][d]
+							}
+						}
+						return maxProfitWednesday
+					}
+					const maxProfitWednesday = getMaxProfitWednesday(allTableProfitStores)
+					// 6)сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+					function getDayProfitUp200(tableProfit) {
+						let arrDayProfitUp200 = []
+						for (let row of tableProfit) {
+							for (let price of row) {
+								if (price > 200)
+									arrDayProfitUp200.push(price)
+							}
+						}
+						return arrDayProfitUp200
+					}
+					const arrayDayProfitUp200 = getDayProfitUp200(allTableProfitStores)
+					//7) відсортувати кожен тиждень за зростанням
+					const copyAllTableProfitStores = JSON.parse(JSON.stringify(allTableProfitStores))
+					for (let row of copyAllTableProfitStores) {
+						for (let price of row) {
+							row.sort((price1, price2) => price1 - price2)
+						}
+						document.write(`
+							<div class="text--mb">
+							<p class="text">Тиждень за зростанням ${row}</p>
+							</div>
+						`)
+					}
+					/*
+					let sortingGrowth = allTableProfitStores.map(
+						(row) => {
+							row.sort((price1, price2) => price1 - price2)
+							document.write(`
+							<div class="text--mb">
+							<p class="text">Тиждень за зростанням ${row}</p>
+							</div>
+							`)
+						}
+					)
+					*/
+					//8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні
+					/*let sortedTablePrice = allTableProfitStores.sort(
+						(el1, el2) => Math.max(...el2) - Math.max(...el1)
+					)*/
+					//Результат, який я отримав в результаті сортування. Не сортуває рядок, самостійно помилку я не знайшов
+					let maxWeekPrice = allTableProfitStores.map((row) => Math.max(...row))
+					function sortSelect(arrMax, arr) {
+						let preLastIndex = arrMax.length - 1
+						for (let i = 0; i < preLastIndex; i++) {
+							let currentMaxIndex = i
+							for (let j = i + 1; j < arrMax.length; j++) {
+								if (arrMax[j] > arrMax[currentMaxIndex]) currentMaxIndex = j
+							}
+							if (i !== currentMaxIndex) {
+								let tmp = arrMax[i]
+								arrMax[i] = arrMax[currentMaxIndex]
+								arrMax[currentMaxIndex] = tmp
+
+								tmp = arr[i]
+								arr[i] = arr[currentMaxIndex]
+								arr[currentMaxIndex] = tmp
+							}
+						}
+						return arr
+					}
+					/*
+					const sortedTablePrice = sortSelect(maxWeekPrice, copySecondAllTableProfitStores)
+					console.table(sortedTablePrice)
+					console.table(allTableProfitStores)*/
+					//9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку
+					/*
+					let sortedTableMaxSum = allTableProfitStores.sort((row1, row2) => {
+						const weekSum1 = row1.reduce((sumElem, el) => sumElem + el)
+						const weekSum2 = row2.reduce((sumElem, el) => sumElem + el)
+						if (weekSum1 > weekSum2) return -1
+						else if (weekSum1 < weekSum2) return 1
+						return 0
+					})*/
+
+					const sortedTableMaxSum = sortSelect(sumProfitStoresWeek, copySecondAllTableProfitStores)
+					//console.table(sortedTableMaxSum)
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Загальний прибуток кожного масиву за тиждень: ${sumProfitStoresWeek}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний прибуток прибуток усіх магазинів по дням: ${sumDayProfit}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний прибуток за робочі дні: ${sumWorkDayWeek}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний прибуток за робочі дні: ${sumWeekendDayWeek}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Максимальний прибуток за середу: ${maxProfitWednesday}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний список зі значенням, які що більші за 200: ${arrayDayProfitUp200}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний список (рядків) за спаданням максимального елементи у цьому тижні ${sortedTablePrice}</p>
+					</div>
+					<div class="text--mb">
+						<p class="text">Загальний список (рядків) за спаданням суми елементів у рядку ${sortedTableMaxSum}</p>
+					</div>
+					`)
+
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

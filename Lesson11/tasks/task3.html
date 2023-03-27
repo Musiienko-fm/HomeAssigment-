@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 3</h1>
+				<div class="task__text text">
+					Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+					стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не
+					закінчаться снаряди.
+				</div>
+				<script>
+					//1. Отримуємо необхідні дані
+					const amountUserShot = parseInt(prompt('Введіть кількість пострілів'))
+					const quantityShips = 5
+					function getRandomNumber(minValue, maxValue) {
+						const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+						return randomNumber
+					}
+					//2. Cтворюємо поле
+					function getPlayingField(width, height) {
+						let playingField = []
+						for (let i = 0; i < width; i++) {
+							let row = []
+							for (let j = 0; j < height; j++) {
+								row.push(0)
+							}
+							playingField.push(row)
+						}
+						console.log(playingField)
+						return playingField
+					}
+
+					const playingField = getPlayingField(6, 6)
+
+					function getRandomNumber(minValue, maxValue) {
+						const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+						return randomNumber
+					}
+
+					function addShipsField(field, ships) {
+						let countShips = ships
+						do {
+							let coordinateRow = getRandomNumber(0, 5)
+							let coordinateColumn = getRandomNumber(0, 5)
+							if (field[coordinateRow][coordinateColumn] === 0) {
+								field[coordinateRow][coordinateColumn] = 1
+								countShips--
+							}
+						} while (countShips > 0)
+
+					}
+					addShipsField(playingField, 5)
+
+					function userShot(field, amountShips, numberShot) {
+						do {
+							let userShotX = parseInt(prompt('Введіть координату пострілу X, від 1-6', ''))
+							let userShotY = parseInt(prompt('Введіть координату пострілу Y, від 1-6'))
+							if (field[userShotX - 1][userShotY - 1] === 1) {
+								alert("Ви влучили")
+								field[userShotX][userShotY] = 0
+								amountShips--
+								numberShot--
+							}
+							else {
+								alert('Ви не влучили')
+								numberShot--
+							}
+						} while (numberShot > 0 && amountShips > 0);
+						if (amountShips !== 0 && numberShot === 0) return alert("Ви програли")
+						else return alert('Ви виграли')
+					}
+					const playGame = userShot(playingField, quantityShips, amountUserShot)
+
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>
