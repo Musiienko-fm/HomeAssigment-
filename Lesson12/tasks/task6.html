@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="body-list__text text">
+				Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною
+				5 символів і під яким індексом.
+			</p>
+			<script>
+				//1. Отримуємо необхідні дані
+				const nameArray = ["Andriy", "Vasyl", "Galina", "Dmytro", "Olga", "Ivanna", "Kateryna", "Mykola", "Yuliya"];;
+				//2. Знаходимо результат
+				function checkNameLength(array, userNameLength) {
+					let start = 0
+					let end = array.length - 1
+					while (start <= end) {
+						const middle = Math.floor((start + end) / 2)
+						if (array[middle].length === userNameLength) return middle
+						if (array[middle].length < userNameLength) start = middle + 1
+						if (array[middle].length > userNameLength) end = middle - 1
+					}
+					return -1
+				}
+
+				const nameArraySort = nameArray.sort((name1, name2) => {
+					return name1.length - name2.length
+				})
+				console.log(nameArraySort)
+				const searchNameIndex = checkNameLength(nameArraySort, 5)
+				if (searchNameIndex !== -1) {
+					document.write(`
+						<div class="text--mb">
+							<p class="text">В масиві є ім’я довжиною 5 символів під індексом ${searchNameIndex}</p>
+						</div>
+					`)
+				}
+				else {
+					document.write(`
+						<div class="text--mb">
+							<p class="text">"Ім'я довжиною 5 символів відсутне в масиві"</p>
+						</div>
+					`)
+				}
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

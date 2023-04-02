@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 3</h1>
+			<p class="task__text text">
+				Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+			</p>
+			<script>
+				//1. Вводимо необхідні дані
+				const minNumber = 1
+				const maxNumber = 100
+				const quantityNumber = 30
+				function getRandomNumber(minNumber, maxNumber) {
+					return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber
+				}
+				// Записуємо масив чисел
+				function getArrayNumber(quantityNumber, minNumber, maxNumber) {
+					let arrayNumbers = []
+					for (let i = 0; i < quantityNumber; i++) {
+						let oneRandomNumber = getRandomNumber(minNumber, maxNumber)
+						arrayNumbers.push(oneRandomNumber)
+					}
+					return arrayNumbers
+				}
+				const arrayNumbers = getArrayNumber(quantityNumber, minNumber, maxNumber)
+				console.log(arrayNumbers)
+				//2. Вводимо необхідні дані
+				function getSortInclusion(array) {
+					let countPermutation = 0
+					for (let k = 1; k < array.length; k++) {
+						const currentElement = array[k]
+						let i = k - 1
+						while (i >= 0 && array[i] > currentElement) {
+							array[i + 1] = array[i]
+							i = i - 1
+							countPermutation++
+						}
+						array[i + 1] = currentElement
+					}
+					return countPermutation
+				}
+				const numberInclusionPermutation = getSortInclusion(arrayNumbers)
+				//3. Виводимо результат
+				document.write(`
+				<div class="text--mb">
+						<p class="text">Кількість обмінів під час сортування дорівнює ${numberInclusionPermutation}</p>
+				</div>
+				`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

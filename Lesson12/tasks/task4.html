@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць
+				за зразком.
+			</p>
+			<ul class="body-list__text text">
+				<li class="body-list__text text">
+					1) сортування бульбашкою;
+				</li>
+				<li class="body-list__text text">
+					2) сортування змішуванням;
+				</li>
+				<li class="body-list__text text">
+					3) сортування включеннями;
+				</li>
+			</ul>
+			<script>
+				const arrayNumbers = [3, 5, 1, 4, 2]
+				document.write(`<p class="text">Оригінальний масив ${arrayNumbers}</p>`)
+				//1) сортування бульбашкою;
+				function getSortBubbleArray(array) {
+					let arraySort = [...array]
+					document.write('<p class="text">Сортуванння бульбашкою</p>')
+					let changed
+					do {
+						changed = false
+						for (let i = 1; i < arraySort.length; i++) {
+							if (arraySort[i - 1] > arraySort[i]) {
+								let tmp = arraySort[i - 1];
+								arraySort[i - 1] = arraySort[i]
+								arraySort[i] = tmp
+								changed = true;
+								document.write(`<p class="text">[${arraySort}]</p>`)
+							}
+						}
+					} while (changed)
+					return arraySort
+				}
+				//2) сортування змішуванням;
+				const swap = (arr, i, j) => {
+					const akum = arr[i]
+					arr[i] = arr[j]
+					arr[j] = akum
+				}
+				function getSortMixingArray(array) {
+					let arraySort = [...array]
+					document.write('<p class="text">Сортуванння змішуванням</p>')
+					let leftIndex = 0
+					let rightIndex = arraySort.length - 1
+					while (leftIndex < rightIndex) {
+						for (let idx = leftIndex; idx < rightIndex; idx++) {
+							if (arraySort[idx] > arraySort[idx + 1]) {
+								swap(arraySort, idx, idx + 1)
+								document.write(`<p class="text">[${arraySort}]</p>`)
+							}
+						}
+						rightIndex--
+						for (let idx = rightIndex; idx > leftIndex; idx--) {
+							if (arraySort[idx] < arraySort[idx - 1]) {
+								swap(arraySort, idx, idx - 1)
+								document.write(`<p class="text">[${arraySort}]</p>`)
+							}
+						}
+						leftIndex++
+					}
+					return arraySort
+				}
+				//3) сортування включеннями;
+				function getSortInclusion(array) {
+					let arraySort = [...array]
+					document.write('<p class="text">Сортуванння включеннями</p>')
+					for (let k = 1; k < arraySort.length; k++) {
+						const currentElement = arraySort[k]
+						let i = k - 1
+						while (i >= 0 && arraySort[i] > currentElement) {
+							arraySort[i + 1] = arraySort[i]
+							i = i - 1
+						}
+						arraySort[i + 1] = currentElement
+						document.write(`<p class="text">[${arraySort}]</p>`)
+					}
+					return arraySort
+				}
+				//Проводимо сортування
+				const sortBubbleArray = getSortBubbleArray(arrayNumbers)
+				const sortMixingArray = getSortMixingArray(arrayNumbers)
+				const sortInclusionArray = getSortInclusion(arrayNumbers)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

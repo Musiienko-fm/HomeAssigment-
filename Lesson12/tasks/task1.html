@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+				</div>
+				<script>
+					//1. Вводимо необхідні дані
+					const minNumber = 1
+					const maxNumber = 100
+					const quantityNumber = 30
+					function getRandomNumber(minNumber, maxNumber) {
+						return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber
+					}
+					// Записуємо масив чисел
+					function getArrayNumber(quantityNumber, minNumber, maxNumber) {
+						let arrayNumbers = []
+						for (let i = 0; i < quantityNumber; i++) {
+							let oneRandomNumber = getRandomNumber(minNumber, maxNumber)
+							arrayNumbers.push(oneRandomNumber)
+						}
+						return arrayNumbers
+					}
+					const arrayNumbers = getArrayNumber(quantityNumber, minNumber, maxNumber)
+					console.log(arrayNumbers)
+					//2. Знаходимо результат
+					function getSortBubbleArray(array) {
+						let countPermutation = 0
+						let changed
+						do {
+							changed = false
+							for (let i = 1; i < array.length; i++) {
+								if (array[i - 1] > array[i]) {
+									let tmp = array[i - 1];
+									array[i - 1] = array[i]
+									array[i] = tmp
+									changed = true;
+									countPermutation++
+								}
+							}
+						} while (changed)
+						console.log(array)
+						return countPermutation
+					}
+					const numberBubblePermutation = getSortBubbleArray(arrayNumbers)
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Кількість обмінів під час сортування дорівнює ${numberBubblePermutation}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>
