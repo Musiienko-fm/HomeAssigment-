@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 2</h1>
+			<div class="body-list__text text">
+				Нехай x<sub>0</sub>=x<sub>1</sub>=1 , x<sub>i</sub>= x<sub>i-1</sub>+2x<sub>i-2</sub> де
+				i=2,3,...Визначити X<sub>n</sub>. Розв’язати
+				з використанням рекурсивних і нерекурсивних алгоритмів
+			</div>
+			<script>
+				//1. Записуємо функцію
+				function getNumberRecursion(i) {
+					if (i === 0 || i === 1)
+						return 1
+					else
+						return getNumberRecursion(i - 1) + 2 * getNumberRecursion(i - 2)
+				}
+				function getNumberNoRecursion(i) {
+					let x_i = 0
+					if (i === 0 || i === 1)
+						return 1
+					else {
+						let x_i_0 = 1
+						let x_i_1 = 1
+						for (let n = 2; n <= i; n++) {
+							x_i = x_i_1 + 2 * x_i_0
+							x_i_0 = x_i_1
+							x_i_1 = x_i
+						}
+					}
+					return x_i
+				}
+				//2. Отримуємо необхідні дані
+				let userAmount = parseInt(prompt('Введіть номер елементу, що знаходять?'))
+				//3. Проводимо  обчислення
+				let numberRecursion = getNumberRecursion(userAmount)
+				let numberNoRecursion = getNumberNoRecursion(userAmount)
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Результат обчислення X<sub>10</sub>= ${numberRecursion}</p>
+						<p class="text">Результат обчислення X<sub>10</sub>= ${numberNoRecursion}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

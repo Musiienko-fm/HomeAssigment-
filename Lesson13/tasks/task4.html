@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати
+				по одну букву наперед заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для
+				користувача опис цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість
+				вгаданих букв.
+			</p>
+			<script>
+				//1. Записуємо функцію
+				function createLetterIterator(word) {
+					let index = 0
+					return function () {
+						if (index < word.length) {
+							const currentLetter = word[index]
+							index++
+							return currentLetter;
+						} else {
+							return 'Слово закінчилося'
+						}
+					}
+				}
+				function createGameTranslations(word, question) {
+					alert(`${question}, букв в слові ${word.length}`)
+					let countGuessedLetters = 0
+					const letterGuessedWord = createLetterIterator(word)
+					for (let i = 0; i < word.length; i++) {
+						const userLetter = prompt(`Введіть букву. Залишилося букв ${word.length - i}`)
+						if (userLetter.toLowerCase() === letterGuessedWord().toLowerCase())
+							countGuessedLetters++
+					}
+					return countGuessedLetters
+				}
+				let totalAmountGuessedLetters = createGameTranslations('Hoverla', 'Найвища гора України? Напишіть відповідь латиницею')
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">Кількість вгаданих букв ${totalAmountGuessedLetters}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

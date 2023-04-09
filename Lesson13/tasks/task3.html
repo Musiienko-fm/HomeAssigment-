@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 3</h1>
+			<p class="task__text text">
+				З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати
+				по одне значення від заданого мінімального до заданого максимального. Якщо значення досягне максимального,
+				то наступним буде мінімальне значення. З використанням цієї функції реалізувати перебір номерів місяців
+			</p>
+			<script>
+				//1. Отримуємо необхідні дані
+				const minMonth = 1
+				const maxMonth = 12
+				//2. Записуємо функцію
+				function createMonthIterator(min, max) {
+					let numberMonth = min
+					return function () {
+						if (numberMonth > max) numberMonth = min
+						return numberMonth++
+					}
+				}
+				//3. Проводимо  обчислення
+				let resultNumberMonth = createMonthIterator(minMonth, maxMonth)
+				for (let i = 0; i < maxMonth + 1; i++) {
+					document.write(`
+				<div class="text--mb">
+						<p class="text">Номер місяця ${resultNumberMonth()}</p>
+				</div>
+				`)
+				}
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
