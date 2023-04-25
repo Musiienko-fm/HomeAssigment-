@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Розробити клас MultChecker для перевірки таблиці множення
+			</p>
+			<script>
+				//1. Записуємо об'єкт
+				class MultiplicationTable {
+					constructor(checkNumber) {
+						this.checkNumber = checkNumber
+						this.quantityCorrectAnswers = 0
+						this.quantityWrongAnswers = 0
+					}
+					getRandomNumber(minValue, maxValue) {
+						return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+					}
+					checkMultiplicationResult() {
+						do {
+							let randomNumber = this.getRandomNumber(1, 10)
+							let userResult = parseInt(prompt(`Результат множення ${this.checkNumber} * ${randomNumber}`))
+							if (userResult === randomNumber * this.checkNumber) {
+								this.quantityCorrectAnswers++
+								alert('Вірна відповідь')
+							}
+							else {
+								this.quantityWrongAnswers++
+								alert('Ви помилилися')
+							}
+						} while (confirm('Будете продовжувати?'))
+					}
+					showScreenResult() {
+						document.write(`
+						<div class="text--mb">
+							<p class="text">Обране число: ${(this.checkNumber)}</p>
+							<p class="text">Правильне обчислення: ${(this.quantityCorrectAnswers)}</p>
+							<p class="text">Неправильне обчислення: ${(this.quantityWrongAnswers)}</p>
+						</div>`)
+					}
+				}
+				//2. Створюємо об'єкт
+				let userMultiplyNumber = parseInt(prompt('Введіть число для обчислень'))
+				let multChecker = new MultiplicationTable(userMultiplyNumber)
+				multChecker.checkMultiplicationResult()
+				multChecker.showScreenResult()
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

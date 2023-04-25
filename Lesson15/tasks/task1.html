@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+	<body>
+		<div class="task">
+			<div class="task__container">
+				<h1 class="task__title  title">Задача 1</h1>
+				<div class="task__text text">
+					Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми,
+					а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних
+					значенням.
+					Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+				</div>
+				<script>
+					//1. Отримуємо значення min, max
+					let min = parseInt(prompt('Введіть мінімальне число'))
+					let max = parseInt(prompt('Введіть максимальне число'))
+					//1. Записуємо об'єкти
+					let objFirst = {
+						numberArray: [2, 8, 20, 12, 4, 10, 6],
+						getNumberSum: function () {
+							return this.numberArray.reduce((prevSum, element) => prevSum + element)
+						}
+					}
+					let objSecond = {
+						numberArray: [8, 4, 12, 3, 7, 15, 5],
+						getMultiplyNumbers: function (min, max) {
+							return this.numberArray.reduce((prevMult, element) => element >= min && element <= max ? prevMult * element : prevMult, 1)
+						}
+					}
+
+					//2. Проводимо розрахунок
+					let objFirstSum = objFirst.getNumberSum();
+					let objSecondSum = objFirst.getNumberSum.call(objSecond);
+					let objSecondSumCall = objFirst.getNumberSum.apply(objSecond)
+					let objFirstMultiply = objSecond.getMultiplyNumbers.apply(objFirst, [min, max])
+					let objFirstMultiplyCall = objSecond.getMultiplyNumbers.call(objFirst, min, max)
+					let objSecondMultiply = objSecond.getMultiplyNumbers(min, max);
+					//3. Виводимо результат
+					document.write(`
+					<div class="text--mb">
+						<p class="text">Сумма першого масиву чисел: ${(objFirstSum)}</p>
+						<p class="text">Сумма другого масиву чисел: ${(objSecondSum)}</p>
+						<p class="text">Добуток першого масиву чисел: ${(objFirstMultiply)}</p>
+						<p class="text">Добуток другого масиву чисел: ${(objSecondMultiply)}</p>
+					</div>`)
+				</script>
+			</div>
+		</div>
+	</body>
+</body>
+
+</html>

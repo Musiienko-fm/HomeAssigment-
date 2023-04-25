@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 6</h1>
+			<p class="body-list__text text">
+				Розробити клас «Керівник танців»
+			</p>
+			<script>
+				//1. Записуємо об'єкт
+				class DirectorDance {
+					constructor(arrayBoysNames, arrayGirlsNames) {
+						this.boysNames = arrayBoysNames;
+						this.girlsNames = arrayGirlsNames;
+					}
+					getRandomNumber(minValue, maxValue) {
+						return Math.floor(Math.random() * (maxValue - minValue)) + minValue
+					}
+					getDancingCouple() {
+						let boyIndex = this.getRandomNumber(0, (this.boysNames.length))
+						let girlIndex = this.getRandomNumber(0, (this.girlsNames.length))
+						document.write(`
+						<div class="text--mb">
+							<p class="text"> Танцювальна пара: ${this.boysNames[boyIndex]} та ${this.girlsNames[girlIndex]}</p>
+						</div>`)
+					}
+					start() {
+						setInterval(() => this.getDancingCouple(), 5000)
+					}
+				}
+				const boysNames = ['Adam', 'Benjamin', 'Christopher', 'Daniel', 'Ethan', 'Frank', 'George', 'Henry', 'Isaac', 'Jacob'];
+				const girlsNames = ['Abigail', 'Bethany', 'Charlotte', 'Danielle', 'Emily', 'Fiona', 'Grace', 'Hannah', 'Isabella', 'Jennifer'];
+				let dancing = new DirectorDance(boysNames, girlsNames)
+				console.log(dancing)
+				dancing.start()
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 5</h1>
+			<p class="task__text text">
+				Масив об’єктів ( графічних зображень та посилань на сайти)
+			</p>
+			<script>
+				//1. Описуємо об'єкт
+				class ImageItem {
+					constructor(link, img) {
+						this.link = link
+						this.img = img
+					}
+				}
+				class ShowBanner {
+					constructor(arrayImage) {
+						this.image = arrayImage
+					}
+					getRandomNumber(minValue, maxValue) {
+						return Math.floor(Math.random() * (maxValue - minValue)) + minValue
+					}
+					showBannerScreeN() {
+						let bannerIndex = this.getRandomNumber(0, this.image.length)
+						console.log(bannerIndex)
+						document.write(`
+						<div class="text--mb">
+							<a class="text" href="${this.image[bannerIndex].link}" target="_blanc"><img src="${(this.image[bannerIndex].img)}"></a>
+						</div>`)
+					}
+				}
+				//2. Створюємо об'єкт
+				let imageList = [
+					new ImageItem(link = "https://developer.mozilla.org", img = "https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L25zMTE0MzgtaW1hZ2Uta3d2eWRidmUuanBn.jpg"),
+					new ImageItem(link = "https://uk.javascript.info/", img = "https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTQ1NTE4MS1pbWFnZS1rd3Z4dnE3Ny5qcGc.jpg"),
+					new ImageItem(link = "https://www.awwwards.com/", img = "https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZydGVtcGxlX3JlZF9hcmNoaXRlY3R1cmVfbGlnaHQtaW1hZ2Uta3liY2pubzkuanBn.jpg"),
+					new ImageItem(link = "https://developer.mozilla.org", img = "https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MTkwNzI3My13aWtpbWVkaWEtaW1hZ2Uta293ZWgwbjEuanBn.jpg"),
+					new ImageItem(link = "https://uk.javascript.info/", img = "https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L25zMjA1NDktaW1hZ2Uta3d2eWE5eDguanBn.jpg"),
+					new ImageItem(link = "https://www.awwwards.com/", img = "https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcGQxMDYtMDM4LWNoaW0uanBn.jpg")
+				]
+				let screenBanner = new ShowBanner(imageList)
+				screenBanner.showBannerScreeN()
+				console.log(screenBanner)
+
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

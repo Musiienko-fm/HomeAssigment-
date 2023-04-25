@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 3</h1>
+			<p class="task__text text">
+				Створити об’єкт «Авто»
+			</p>
+			<script>
+				//1. Записуємо функцію
+				function Auto(autoBrand, tankExpansion, numberLiters, numberSeats, numberPassengers) {
+					this.autoBrand = autoBrand
+					this.tankExpansion = tankExpansion
+					this.numberLiters = numberLiters
+					this.numberSeats = numberSeats
+					this.numberPassengers = numberPassengers
+				}
+				//2. Записуємо методи
+				Auto.prototype.calcFillingLiters = function (numberFilledLiters) {
+					if (this.numberLiters + numberFilledLiters > this.tankExpansion)
+						throw new Error('В баку не вистачає місця')
+					else
+						this.numberLiters += numberFilledLiters
+				}
+				Auto.prototype.showQuantityPassengers = function () {
+					document.write(`
+						<div class="text--mb">
+							<p class="text">${(this.numberPassengers)}</p>
+						</div>`)
+				}
+				Auto.prototype.calcQuantityPassengers = function (addPassengers) {
+					if (this.numberPassengers + addPassengers > this.numberSeats)
+						throw new Error('В авто недостатньо місць')
+					else
+						this.numberPassengers += addPassengers
+				}
+				Auto.prototype.calcDisembarkationPassengers = function (pickUpPassengers) {
+					if (this.numberPassengers - pickUpPassengers < 0) {
+						throw new Error('В авто меньше пасажирів')
+					}
+					else
+						this.numberPassengers -= pickUpPassengers
+				}
+				let firstAuto = new Auto('Volvo', 150, 50, 5, 2)
+				console.log(firstAuto)
+				firstAuto.calcFillingLiters(90)
+				firstAuto.calcQuantityPassengers(2)
+				firstAuto.calcDisembarkationPassengers(3)
+				document.write(`<div class="text--mb">
+							<p class="text">Марка: ${(firstAuto.autoBrand)}</p>
+							<p class="text">Розмір бака: ${(firstAuto.tankExpansion)}</p>
+							<p class="text">Кількість наявних літрів: ${(firstAuto.numberLiters)}</p>
+							<p class="text">Кількість місць: ${(firstAuto.numberSeats)}</p>
+							<p class="text">Кількість пасажирів: ${(firstAuto.numberPassengers)}</p>
+						</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

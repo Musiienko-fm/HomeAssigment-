@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 2</h1>
+			<p class="task__text text">
+				Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+			</p>
+			<script>
+				//1. Властивості
+				function GameShoting(widthField, rabbitsNum, numberShot) {
+					this.widthField = widthField
+					this.rabbitsNum = rabbitsNum
+					this.numberShot = numberShot
+					this.fieldGameShoting = this.getFieldPlaying(widthField, rabbitsNum)
+				}
+				//2.Методи
+				GameShoting.prototype.getRandomNumber = function (minValue, maxValue) {
+					return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
+				}
+				GameShoting.prototype.getZeroField = function (widthField) {
+					let zeroField = []
+					for (let i = 0; i < widthField; i++) {
+						zeroField.push(0)
+					}
+					return zeroField
+					console.log(zeroField)
+				}
+				GameShoting.prototype.getFieldPlaying = function (widthField, rabbitsNum) {
+					let playingField = this.getZeroField(widthField)
+					do {
+						let coordinateRow = this.getRandomNumber(0, widthField - 1)
+						if (playingField[coordinateRow] === 0) {
+							playingField[coordinateRow] = 1
+							rabbitsNum--
+						}
+					} while (rabbitsNum > 0)
+					return playingField
+				}
+				GameShoting.prototype.printField = function () {
+					document.write(`<p class="text">${this.fieldGameShoting}</p>`)
+				}
+				GameShoting.prototype.userShot = function () {
+					do {
+						let userShot = parseInt(prompt(`Виберіть координату пострілу 1 до ${this.widthField}`))
+						if (this.fieldGameShoting[userShot - 1] === 1) {
+							alert("Ви влучили")
+							this.fieldGameShoting[userShot] = 0
+							this.rabbitsNum--
+							this.numberShot--
+						}
+						else {
+							alert('Ви не влучили')
+							this.numberShot--
+						}
+					} while (this.numberShot > 0 && this.rabbitsNum > 0);
+					if (this.rabbitsNum !== 0 && this.numberShot === 0) return alert("Ви програли")
+					else return alert('Ви виграли')
+				}
+				//3. Розрахунок
+				let widthField = parseInt(prompt('Довжина поля'))
+				let rabbitsNum = parseInt(prompt('Кількість зайців'))
+				let numberShot = parseInt(prompt('Кількість пострілів'))
+				let playGame = new GameShoting(widthField, rabbitsNum, numberShot)
+				playGame.userShot()
+				playGame.printField()
+				console.log(playGame)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

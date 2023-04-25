@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 7</h1>
+			<p class="task__text text">
+				Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим
+				фіксованим повідомленням).
+			</p>
+			<script>
+				//1. Записуємо функцію
+				function createTable(tableRows, tableColumns, text) {
+					document.write(`
+					<table>
+						<tbody>
+					`)
+					for (let r = 1; r <= tableRows; r++) {
+						document.write(`<tr>`)
+						for (let d = 1; d <= tableColumns; d++) {
+							document.write(`<td>${text}</td>`)
+						}
+						document.write(`</tr>`)
+					}
+					document.write(`
+						</tbody>
+					</table>
+					`)
+				}
+
+				//2. Вводимо необхідні дані
+				const userTableRows = parseInt(prompt("Введіть кількість рядків"))
+				const userTableColumn = parseInt(prompt("Введіть кількість колонок"))
+				const userText = prompt("Введіть текст")
+				createTable(userTableRows, userTableColumn, userText)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
