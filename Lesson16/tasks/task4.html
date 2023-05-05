@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 4</h1>
+			<p class="body-list__text text">
+				Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості
+				купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної
+				сум, які може видати банкомат, та метод зняття деякої суми.
+			</p>
+			<script>
+				//1. Записуємо об'єкт
+				class Banknotes {
+					#quantity
+					constructor(arrDenomination, arrQuantity) {
+						this.banknoteDenomination = arrDenomination
+						this.Quantity = arrQuantity
+					}
+
+					get Quantity() {
+						return this.#quantity
+					}
+					set Quantity(value) {
+						if (value < 0)
+							throw new Error("Неправильна кількість, кількість банкнот неможе бути від'ємною")
+						this.#quantity = value
+					}
+				}
+				class TBankomat {
+					#listBanknotes
+					constructor(listBanknotes) {
+						this.#listBanknotes = listBanknotes
+					}
+					get ListBanknotes() {
+						return this.#listBanknotes
+					}
+					getMinAmountMoney() {
+						let min = this.#listBanknotes.Quantity.reduce((prevMin, el) => el > 0 && el < prevMin ? prevMin = el : prevMin,
+							0)
+						return min
+					}
+					getMaxAmountMoney() {
+						return this.#listBanknotes.reduce((prevMaxSum, el) => prevMaxSum + el.Quantity * el.banknoteDenomination,
+							0)
+					}
+					getWithdrawalFunds(userSum) {
+						if (userSum > this.getMaxAmountMoney())
+							throw new Error("Недостатньо грошей в банкоматі")
+						if (userSum > this.getMaxAmountMoney())
+							throw new Error("Недостатньо грошей в банкоматі")
+					}
+
+				}
+				/*Далі я заплутався, розумію що потрібно перевірити наявність купюр перед тим як видати сумму використовуючи остачу від ділення,
+				але мені складно звести все до купи. Намагався розібратися, але бачив складні рішення у колег але розумію, що рішення повинно бути набагато простіше
+				буду вдячний якщо підкажете правильне рішення, щоб можна було його розібрати. Або можливо на уроці задачу розібрати*/
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 2</h1>
+			<p class="task__text text">
+				Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+				еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+				визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі
+			</p>
+			<script>
+				//1. Записуємо об'єкт
+				class TMoney {
+					#dollarRate = 0
+					#moneyDollar = 0
+					constructor(amountMoney, currentDollarRate) {
+						this.DollarRate = currentDollarRate
+						this.Money = amountMoney / currentDollarRate
+					}
+					get DollarRate() {
+						return this.#dollarRate
+					}
+					set DollarRate(value) {
+						if (value <= 0)
+							throw new Error('Невірне значення курсу')
+						this.#dollarRate = value
+					}
+					get Money() {
+						return this.#moneyDollar
+					}
+					set Money(value) {
+						if (value < 0)
+							throw new Error('Недостатньо коштів на рахунку')
+						this.#moneyDollar = value
+					}
+					increaseMoney(value) {
+						this.Money += value / this.DollarRate
+					}
+					decreasingMoney(value) {
+						this.Money -= value / this.DollarRate
+					}
+					getDollarRateUp100() {
+						let moneyHryvnia = this.Money * this.DollarRate
+						return (moneyHryvnia + 100) / this.Money
+					}
+					toString() {
+						return `Balance: ${(this.Money).toFixed(2)}, Dollar Rate: ${this.DollarRate}`
+					}
+				}
+				//2. Створюємо об'єкти
+				let userMoney = new TMoney(10000, 38.55)
+				console.log(userMoney)
+				userMoney.increaseMoney(1000)
+				console.log(userMoney)
+				userMoney.decreasingMoney(5000)
+				console.log(userMoney)
+				let dollarRateMoneyUp100 = userMoney.getDollarRateUp100()
+				//3. Виводимо результат
+				document.write(`
+					<div class="text--mb">
+						<p class="text">${(userMoney)}</p>
+						<p class="text">Курс доллара, при якому сумма збільшиться на 100:  ${(dollarRateMoneyUp100.toFixed(2))}</p>
+					</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>

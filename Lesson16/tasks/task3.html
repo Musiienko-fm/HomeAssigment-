@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+	<div class="task">
+		<div class="task__container">
+			<h1 class="task__title  title">Задача 3</h1>
+			<p class="task__text text">
+				Об’єкт “Фірма” (використати члени-класи)
+			</p>
+			<script>
+				//1. Описуємо об'єкти
+				class DateEstablishment {
+					constructor(year, month) {
+						this.yearFoundation = year
+						this.monthFoundation = month
+					}
+					toString() {
+						return `<p class="text">Дата заснування: ${this.monthFoundation}/${this.yearFoundation}</p>`
+					}
+				}
+				class Services {
+					constructor(name, cost, term) {
+						this.nameServise = name
+						this.costServise = cost
+						this.termServise = term
+					}
+					toString() {
+						return `
+							<p class="text">Назва послуги: ${this.nameServise}</p>
+							<p class="text">Вартість послуги: ${this.costServise}</p>
+							<p class="text">Термін виконання ${this.termServise}</p>
+							`
+					}
+				}
+				class Branch {
+					constructor(country, city, street, numberHouse) {
+						this.country = country
+						this.city = city
+						this.street = street
+						this.numberHouse = numberHouse
+					}
+					toString() {
+						return `<p class="text">${this.country}, ${this.city}, ${this.street}, ${this.numberHouse}</p>`
+					}
+				}
+				class Firm {
+					constructor(name, date, servise, branch) {
+						this.nameFirm = name
+						this.dateEstablishment = date
+						this.listServise = servise
+						this.listBranch = branch
+					}
+					getQuantityYears() {
+						return new Date().getFullYear() - this.dateEstablishment.yearFoundation
+					}
+					getUserBranch(city) {
+						let userBranch = this.listBranch.filter(el => el.city === city)
+						return userBranch
+					}
+					getUserServise(money, term) {
+						let userServise = this.listServise.filter(el => el.costServise <= money && el.termServise <= term)
+						return userServise
+					}
+					toString() {
+						return `${this.nameFirm} ${this.dateEstablishment} ${this.listServise} ${this.listBranch}`
+					}
+				}
+				// 2. Створюємо масиви об'єктів
+				let dateEstablishment = new DateEstablishment(1996, 6)
+				let arrServise = [
+					new Services('Розробка ескізу', 1200, 14),
+					new Services('Моделювання', 2400, 7),
+					new Services('Виготовлення деталей', 2000, 16),
+					new Services('Сбірка моделі', 900, 4),
+					new Services('Ремонт,обслуговування', 700, 5)
+				]
+				let arrBranch = [
+					new Branch('Україна', 'Харків', 'Сумська', 145),
+					new Branch('Україна', 'Одеса', 'Дерибасівська', 5),
+					new Branch('Україна', 'Вінниця', 'Петлюри', 15),
+					new Branch('Україна', 'Вінниця', 'Коновальця', 23),
+					new Branch('Україна', 'Суми', 'Шевченко', 20)
+				]
+				let firmFirst = new Firm('Першоцвіт', dateEstablishment, arrServise, arrBranch)
+				console.log(firmFirst)
+
+				//2. Записуємо результат
+
+				document.write(`<div class="text--mb">
+							<p class="text">Кількість років існування фірми:${(firmFirst.getQuantityYears())}</p>
+							<p class="text">Філіали : ${(firmFirst.getUserBranch('Вінниця'))}</p>
+							<p class="text">Послуги, що можуть бути виконані: ${(firmFirst.getUserServise(2000, 20))}</p>
+						</div>`)
+			</script>
+		</div>
+	</div>
+</body>
+
+</html>
